@@ -159,7 +159,7 @@
     }
 
     function displayError(e) {
-      alert(e.message);
+      // alert(e.message);
     }
 
     $scope.submitForm = function() {
