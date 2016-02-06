@@ -4,29 +4,29 @@
       <div class="mdl-layout__header-row">
         <nav class="mdl-navigation mdl-layout--large-screen-only">
           <!-- Start Position Field -->
-          <form action="#">
+          <form ng-submit="submitForm()">
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="start">
-              <label class="mdl-textfield__label" for="start">Enter Start Location</label>
+              <!-- <input class="mdl-textfield__input" type="text" id="start" ng-model="form.startLocation"> -->
+              <label class="mdl-textfield__label" for="start" ng-model="form.endLocation">Enter Start Location</label>
             </div>
-          </form>
 
-          <!-- Change Locations -->
-          <button class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">compare_arrows</i>
-          </button>
-          <!-- End Location Field -->
-          <form action="#">
+            <!-- Change Locations -->
+            <button class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">compare_arrows</i>
+            </button>
+
+            <!-- End Location Field -->
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="finish">
+              <!-- <input class="mdl-textfield__input" type="text" id="finish" ng-model="form.endLocation"> -->
               <label class="mdl-textfield__label" for="finsih">Enter End Location</label>
             </div>
+
+            <!-- Accent-colored raised button -->
+            <input type="submit"
+              class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+              value="Find Restaurants" >
           </form>
 
-          <!-- Accent-colored raised button -->
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-            Find Restaurants
-          </button>
         </nav>
       </div>
     </header>
