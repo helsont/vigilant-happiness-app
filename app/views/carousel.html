@@ -1,44 +1,10 @@
 <div class="carousel-wrapper">
 	<slick dots="true" infinite="false" speed=300 slides-to-show=7 touch-move="true" slides-to-scroll=1 class="slider one-time">
-	  <div class="4wrapper">
-	  	<img src="http://coolwildlife.com/wp-content/uploads/galleries/post-1593/Brown%20Bear%20Picture%20001.jpg" width="120">
-	  	<p>THIS IS A NAME</p>
-	  </div>
-	  <div class="4wrapper">
-	  	<img src="http://coolwildlife.com/wp-content/uploads/galleries/post-1593/Brown%20Bear%20Picture%20001.jpg" width="120">
-	  	<p>THIS IS A NAME</p>
-	  </div>
-	  <div class="4wrapper">
-	  	<img src="http://coolwildlife.com/wp-content/uploads/galleries/post-1593/Brown%20Bear%20Picture%20001.jpg" width="120">
-	  	<p>THIS IS A NAME</p>
-	  </div>
-	  <div class="4wrapper">
-	  	<img src="http://coolwildlife.com/wp-content/uploads/galleries/post-1593/Brown%20Bear%20Picture%20001.jpg" width="120">
-	  	<p>THIS IS A NAME</p>
-	  </div>
-	  <div class="4wrapper">
-	  	<img src="http://coolwildlife.com/wp-content/uploads/galleries/post-1593/Brown%20Bear%20Picture%20001.jpg" width="120">
-	  	<p>THIS IS A NAME</p>
-	  </div>
-	  <div class="4wrapper">
-	  	<img src="http://coolwildlife.com/wp-content/uploads/galleries/post-1593/Brown%20Bear%20Picture%20001.jpg" width="120">
-	  	<p>THIS IS A NAME</p>
-	  </div>
-	  <div class="4wrapper">
-	  	<img src="http://coolwildlife.com/wp-content/uploads/galleries/post-1593/Brown%20Bear%20Picture%20001.jpg" width="120">
-	  	<p>THIS IS A NAME</p>
-	  </div>
-	  <div class="4wrapper">
-	  	<img src="http://coolwildlife.com/wp-content/uploads/galleries/post-1593/Brown%20Bear%20Picture%20001.jpg" width="120">
-	  	<p>THIS IS A NAME</p>
-	  </div>
-	  <div class="4wrapper">
-	  	<img src="http://coolwildlife.com/wp-content/uploads/galleries/post-1593/Brown%20Bear%20Picture%20001.jpg" width="120">
-	  	<p>THIS IS A NAME</p>
-	  </div>
-	  <div class="4wrapper">
-	  	<img src="http://coolwildlife.com/wp-content/uploads/galleries/post-1593/Brown%20Bear%20Picture%20001.jpg" width="120">
-	  	<p>THIS IS A NAME</p>
-	  </div>
+    <div ng-repeat="image in images">
+      <div class="4wrapper">
+  	  	<img src="{{image.url}}">
+  	  	<p>{{image.name}}</p>
+  	  </div>
+    </div>
 	</slick>
 </div>

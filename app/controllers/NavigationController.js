@@ -3,9 +3,9 @@
     .module('fast_eats')
     .controller('NavigationController', NavigationController);
 
-  NavigationController.$inject = ['$scope', 'ApiService'];
+  NavigationController.$inject = ['$scope', 'ApiService', '$rootScope'];
 
-  function NavigationController($scope, ApiService) {
+  function NavigationController($scope, ApiService, $rootScope) {
 
     var directionsManager, end, venues, startWaypoint, endWaypoint, venueWaypoint, pinInfobox;
     $scope.form = {
@@ -13,6 +13,12 @@
       endLocation: 'Coney Island'
     };
     var needsUpdate = false;
+
+    function emitChange(venues) {
+      $rootScope.$broadcast('event', {
+        venues: venues
+      });
+    }
 
     setTimeout(function() {
       // Must load after angular loads.
@@ -64,6 +70,7 @@
         directionsManager.addWaypoint(point);
         pins.push(pin);
       }
+
       pinInfobox = new Microsoft.Maps.Infobox(pins[0].getLocation(),
           { title: 'My Pushpin',
            description: 'This pushpin is located at (0,0).',
@@ -112,6 +119,7 @@
 
       ApiService.get(start.latitude+','+start.longitude, end.latitude+','+end.longitude).then(function(values) {
         venues = values.data;
+        emitChange(venues);
         addVenues();
       });
     }

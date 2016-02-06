@@ -3,29 +3,24 @@
     .module('fast_eats')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['$scope'];
+  MainController.$inject = ['$scope', 'ApiService', '$rootScope'];
 
-  function MainController($scope, $http) {
-    /*<bing-map> directive options*/
-    $scope.mapOptions = {};
-    $scope.mapOptions.center = {latitude: 30.614919,longitude: -96.342316};
-    $scope.mapOptions.zoom = 6;
-    $scope.mapOptions.mapType = 'a';
-    /*<pushpin> directive options*/
-    $scope.pushpin = {};
-    $scope.pushpin.location = {latitude: 30.614919,longitude: -96.342316};
-    $scope.pushpin.options = {
-      draggable: true
-    }
-    $scope.pushpin.data= {
-      text: 'Hello World!'
-    };
-    $scope.pushpin.events = {
-        click: function(eventData) {
-            var data = eventData.target.pushpinData;
-            alert('The click event is working fine! Here is the data: ' + data.text)
-        }
-    };
+  function MainController($scope, ApiService, $rootScope) {
 
+    $scope.images = [];
+    $rootScope.$on('event', function(event, data) {
+      var venues = data.venues;
+      debugger;
+      var promises = [];
+      for(var idx = 0, len = venues.length; idx < len; idx++) {
+        promises.push(ApiService.getFirstImage(venues[idx]));
+      }
+
+      Promise.all(promises).then(function(vals) {
+        debugger;
+        $scope.images = vals;
+      });
+
+    });
   }
 })();
