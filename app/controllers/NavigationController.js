@@ -7,7 +7,7 @@
 
   function NavigationController($scope, ApiService) {
 
-    var directionsManager, end, venues, venueWaypoint, pinInfobox;
+    var directionsManager, end, venues, startWaypoint, endWaypoint, venueWaypoint, pinInfobox;
     $scope.form = {
       startLocation: 'Columbia University',
       endLocation: 'Coney Island'
@@ -79,8 +79,8 @@
       }
 
       // Create start and end waypoints
-      var startWaypoint = new Microsoft.Maps.Directions.Waypoint({address:$scope.form.startLocation});
-      var endWaypoint = new Microsoft.Maps.Directions.Waypoint({address:$scope.form.endLocation});
+      startWaypoint = new Microsoft.Maps.Directions.Waypoint({address:$scope.form.startLocation});
+      endWaypoint = new Microsoft.Maps.Directions.Waypoint({address:$scope.form.endLocation});
 
       directionsManager.addWaypoint(startWaypoint);
       addVenues();
@@ -127,7 +127,9 @@
       var newWayPoint = new Microsoft.Maps.Directions.Waypoint({location: location});
       venueWaypoint = newWayPoint;
 
+      directionsManager.removeWaypoint(endWaypoint);
       directionsManager.addWaypoint(newWayPoint);
+      directionsManager.addWaypoint(endWaypoint);
       directionsManager.calculateDirections();
       return false;
     }
