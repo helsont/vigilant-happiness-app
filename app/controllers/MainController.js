@@ -26,5 +26,6 @@
             alert('The click event is working fine! Here is the data: ' + data.text)
         }
     };
+
   }
 })();
