@@ -1,6 +1,4 @@
-angular.module('fast_eats', [
-  'angularBingMaps'
-])
+angular.module('fast_eats')
 .run(function() {
 
 })

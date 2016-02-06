@@ -1,8 +1,6 @@
-console.log('loading');
-
 (function() {
   angular
-    .module('main', [])
+    .module('fast_eats.main', [])
     .controller('MainController', MainController);
 
   console.log('yo');
