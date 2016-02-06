@@ -1,4 +1,1 @@
-angular.module('fast_eats')
-.config(function() {
-  
-});
+angular.module('fast_eats');

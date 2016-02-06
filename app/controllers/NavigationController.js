@@ -3,19 +3,25 @@
     .module('fast_eats')
     .controller('NavigationController', NavigationController);
 
-  NavigationController.$inject = ['$scope'];
+  NavigationController.$inject = ['$scope', 'ApiService'];
 
-  function NavigationController($scope) {
+  function NavigationController($scope, ApiService) {
+
+    var directionsManager, end, venues, venueWaypoint, pinInfobox;
     $scope.form = {
-      startLocation: '',
-      endLocation: ''
+      startLocation: 'Columbia University',
+      endLocation: 'Coney Island'
     };
-    var directionsManager, end;
+
+    ApiService.get().then(function(values) {
+      venues = values;
+    });
 
     setTimeout(function() {
       // Must load after angular loads.
-      map = new Microsoft.Maps.Map(document.getElementById("bing_map"),{
-        credentials:"AkaxzD5YOJCbIvziHVOLfm6AkeM5Z5UQ3dHS53mQzwK-6LGWnxYjAwNqfe3D4UBT"
+      map = new Microsoft.Maps.Map(document.getElementById('bing_map'), {
+        credentials: 'AkaxzD5YOJCbIvziHVOLfm6AkeM5Z5UQ3dHS53mQzwK-6LGWnxYjAwNqfe3D4UBT',
+        enableHighDpi: true
       });
 
       Microsoft.Maps.loadModule('Microsoft.Maps.Directions', { callback: function() {
@@ -23,6 +29,48 @@
         }
       });
     });
+
+    function hideInfobox() {
+      if (pinInfobox) {
+        pinInfobox.setOptions({ visible: false });
+      }
+    }
+
+    function displayInfoBox(pin, idx) {
+      pinInfobox.setLocation(pin.getLocation());
+      pinInfobox.setOptions({
+        title: venues[idx].name,
+        description: 'yo',
+        visible: true
+      });
+    }
+
+    function addVenues() {
+      var pins = [];
+      // Add the waypoints for the forsquare locations
+      for(var idx = 0, len = venues.length; idx < len; idx++) {
+        var point = new Microsoft.Maps.Location(venues[idx].location.lat,
+          venues[idx].location.lng);
+
+        // Add a pin to the center of the map
+        var pin = new Microsoft.Maps.Pushpin(point, {draggable: false});
+        pin.idx = idx;
+
+        map.entities.push(pin);
+
+        // Add a handler to the pushpin drag
+        Microsoft.Maps.Events.addHandler(pin, 'mouseup', onPinSelect);
+
+        directionsManager.addWaypoint(point);
+        pins.push(pin);
+      }
+      pinInfobox = new Microsoft.Maps.Infobox(pins[0].getLocation(),
+          { title: 'My Pushpin',
+           description: 'This pushpin is located at (0,0).',
+           visible: false,
+           offset: new Microsoft.Maps.Point(0,15)});
+      map.entities.push(pinInfobox);
+    }
 
     function directionsModuleLoaded() {
       if (!directionsManager) {
@@ -35,11 +83,11 @@
       var endWaypoint = new Microsoft.Maps.Directions.Waypoint({address:$scope.form.endLocation});
 
       directionsManager.addWaypoint(startWaypoint);
-      var tacomaWaypoint = new Microsoft.Maps.Directions.Waypoint({
-          address: 'Tacoma, WA',
-          location: new Microsoft.Maps.Location(47.255134, -122.441650)
-      });
-      directionsManager.addWaypoint(tacomaWaypoint);
+      addVenues();
+
+      // Hide the infobox when the map is moved.
+      // Microsoft.Maps.Events.addHandler(map, 'viewchange', hideInfobox);
+
       directionsManager.addWaypoint(endWaypoint);
 
       // Set the id of the div to use to display the directions
@@ -52,13 +100,48 @@
       directionsManager.calculateDirections();
     }
 
+    function onPinSelect(e) {
+      if (e.targetType != 'pushpin') {
+        return;
+      }
+
+      var idx = e.target.idx
+        , pin = e.target
+        , venue = venues[e.target.idx];
+      // if we're deselecting the current one
+      if (venueWaypoint && idx == venueWaypoint.idx) {
+        directionsManager.removeWaypoint(venueWaypoint);
+        directionsManager.calculateDirections();
+        hideInfobox();
+        return;
+      }
+
+      if (venueWaypoint && idx != venueWaypoint.idx) {
+        directionsManager.removeWaypoint(venueWaypoint);
+      }
+
+      displayInfoBox(pin, idx);
+      var venue = venues[idx];
+      var location = new Microsoft.Maps.Location(venue.location.lat,
+        venue.location.lng);
+      var newWayPoint = new Microsoft.Maps.Directions.Waypoint({location: location});
+      venueWaypoint = newWayPoint;
+
+      directionsManager.addWaypoint(newWayPoint);
+      directionsManager.calculateDirections();
+      return false;
+    }
+
     function displayError(e) {
       alert(e.message);
     }
 
     $scope.submitForm = function() {
-      console.log('Submitted form');
-      alert('Start: ' + $scope.form.startLocation + ' End:' + $scope.form.endLocation);
+      if (directionsManager) {
+        // find way to clear entities
+        // map.entities.
+        directionsManager.resetDirections();
+      }
       directionsModuleLoaded();
     }
   }
