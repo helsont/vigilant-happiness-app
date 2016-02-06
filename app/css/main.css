@@ -1,0 +1,13 @@
+.mdl-layout .mdl-textfield {
+	margin: 30px;
+}
+
+.mdl-layout {
+	color: white;
+}
+
+.mdl-navigation {
+	margin: 0 auto;
+	display: table;
+	text-align: center;
+}
