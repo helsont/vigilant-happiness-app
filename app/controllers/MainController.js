@@ -7,16 +7,26 @@
   MainController.$inject = ['$scope'];
 
 function MainController($scope, $http) {
-                /*<venue-map> directive options*/
+                /*<bing-map> directive options*/
                 $scope.mapOptions = {};
                 $scope.mapOptions.center = {latitude: 30.614919,longitude: -96.342316};
                 $scope.mapOptions.zoom = 6;
                 $scope.mapOptions.mapType = 'a';
-                $scope.mapOptions.venue = 'bingmapsteam-mccormickplace';
-                $scope.mapOptions.credentials = 'AkaxzD5YOJCbIvziHVOLfm6AkeM5Z5UQ3dHS53mQzwK-6LGWnxYjAwNqfe3D4UBT';
-                // Typically you should inject $routeParams into the controller and read the room name from a route parameter;
-                // Just leave unset if you don't want a room selected
-                $scope.mapOptions.room = 'Exhibition Hall A1' 
+                /*<pushpin> directive options*/
+                $scope.pushpin = {};
+                $scope.pushpin.location = {latitude: 30.614919,longitude: -96.342316};
+                $scope.pushpin.options = {
+                    draggable: true
+                }
+                $scope.pushpin.data= {
+                    text: 'Hello World!'
+                };
+                $scope.pushpin.events = {
+                    click: function(eventData) {
+                        var data = eventData.target.pushpinData;
+                        alert('The click event is working fine! Here is the data: ' + data.text)
+                    }
+                };
             }
 })();
 
