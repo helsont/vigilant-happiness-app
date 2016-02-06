@@ -4,7 +4,7 @@
       <base href="app">
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title ng-bind="pageTitle"></title>
+      <title ng-bind="pageTitle">Fast Eats</title>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width">
 
@@ -28,13 +28,30 @@
         <header class="mdl-layout__header">
           <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title">Title</span>
+            <span class="mdl-layout-title">Fast Eats</span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
-              <a class="mdl-navigation__link" href="">Start</a>
-              <a class="mdl-navigation__link" href="">Finish</a>
+              <!-- Start Position Field -->
+              <form action="#">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input" type="text" id="start">
+                  <label class="mdl-textfield__label" for="start">Enter Start Location</label>
+                </div>
+              </form>
+
+              <!-- Change Locations -->
+              <button class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">compare_arrows</i>
+              </button>
+              <!-- End Location Field -->
+              <form action="#">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input" type="text" id="finish">
+                  <label class="mdl-textfield__label" for="finsih">Enter End Location</label>
+                </div>
+              </form>
             </nav>
           </div>
         </header>
