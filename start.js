@@ -26,6 +26,12 @@ function handleRequest(req, res){
       res.end();
       return;
     }
+    if (fs.lstatSync(filename).isDirectory()) {
+      res.writeHead(200, {'Content-Type': 'text/plain'});
+      res.write('404 Not Found\n');
+      res.end();
+      return;
+    }
     var mimeType = mimeTypes[path.extname(filename).split(".")[1]];
     res.writeHead(200, {'Content-Type':mimeType});
 
