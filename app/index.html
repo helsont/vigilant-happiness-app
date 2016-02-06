@@ -12,12 +12,16 @@
       <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
       <script type="text/javascript" src="../bower_components/angular-bing-maps/dist/angular-bing-maps.min.js"></script>
       <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+      <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
+      <script src="/node_modules/material-design-lite/material.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
       <script src="js/main.js"></script>
       <script src="js/controllers/example.js"></script>
   </head>
   <body ng-app="fast_eats">
       <div ui-view></div>
+
       <bing-map
           credentials="'AsdaxrvLRHyT6eEvSGDY81S2y3_ifh10egwFAMzIOLtxv0ZlwkPE2yG7jMzXzVkp'"
           center="{latitude: 30.614919,longitude: -96.342316}"
