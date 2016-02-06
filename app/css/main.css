@@ -16,9 +16,9 @@
 	position: fixed;
 	bottom: 0px;
 	z-index: 10000;
-	height: 23%;
+	height: 18%;
 	width: 100%;
-	background-color: blue;
+	background-color: rgba(224,224,224, 0.75);
 	padding: 25px;
 }
 
