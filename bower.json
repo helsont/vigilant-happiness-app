@@ -12,6 +12,9 @@
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
     "angular-bing-maps": "~0.2.1",
-    "material-design-lite": "^1.1.1"
+    "material-design-lite": "^1.1.1",
+    "slick": "*",
+    "slick-carousel": "~1.5.9",
+    "angular-slick": "~0.2.1"
   }
 }

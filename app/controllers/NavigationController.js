@@ -18,7 +18,10 @@
       // Must load after angular loads.
       map = new Microsoft.Maps.Map(document.getElementById('bing_map'), {
         credentials: 'AkaxzD5YOJCbIvziHVOLfm6AkeM5Z5UQ3dHS53mQzwK-6LGWnxYjAwNqfe3D4UBT',
-        enableHighDpi: true
+        enableHighDpi: true,
+        center: new Microsoft.Maps.Location(40.7127, -74.0059),
+        zoom: 8,
+        showScalebar: true
       });
 
       Microsoft.Maps.loadModule('Microsoft.Maps.Directions', { callback: function() {
@@ -156,6 +159,13 @@
         // find way to clear entities
         // map.entities.
         directionsManager.resetDirections();
+        // debugger;
+        map.entities.clear();
+        // for (var idx = map.entities.getLength(); idx >= 0; idx--) {
+        //   var curr = map.entities.get(idx);
+        //   map.entities.removeAt(idx);
+        // }
+
       }
       needsUpdate = true;
       directionsModuleLoaded();
