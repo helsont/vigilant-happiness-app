@@ -12,10 +12,7 @@
       startLocation: 'Columbia University',
       endLocation: 'Coney Island'
     };
-
-    ApiService.get().then(function(values) {
-      venues = values;
-    });
+    var needsUpdate = false;
 
     setTimeout(function() {
       // Must load after angular loads.
@@ -83,7 +80,6 @@
       endWaypoint = new Microsoft.Maps.Directions.Waypoint({address:$scope.form.endLocation});
 
       directionsManager.addWaypoint(startWaypoint);
-      addVenues();
 
       // Hide the infobox when the map is moved.
       // Microsoft.Maps.Events.addHandler(map, 'viewchange', hideInfobox);
@@ -98,6 +94,23 @@
 
       // Calculate directions, which displays a route on the map
       directionsManager.calculateDirections();
+
+      // Specify a handler for when the directions are calculated
+      Microsoft.Maps.Events.addHandler(directionsManager, 'directionsUpdated', onDirectionsUpdate);
+    }
+
+    function onDirectionsUpdate() {
+      if (!needsUpdate) {
+        return;
+      }
+      needsUpdate = false;
+      var start = startWaypoint.getLocation();
+      var end = endWaypoint.getLocation();
+
+      ApiService.get(start.latitude+','+start.longitude, end.latitude+','+end.longitude).then(function(values) {
+        venues = values.data;
+        addVenues();
+      });
     }
 
     function onPinSelect(e) {
@@ -144,6 +157,7 @@
         // map.entities.
         directionsManager.resetDirections();
       }
+      needsUpdate = true;
       directionsModuleLoaded();
     }
   }
