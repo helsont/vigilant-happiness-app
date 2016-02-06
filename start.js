@@ -34,7 +34,7 @@ function handleRequest(req, res){
     }
     var mimeType = mimeTypes[path.extname(filename).split(".")[1]];
     res.writeHead(200, {'Content-Type':mimeType});
-
+    console.log('writing file');
     var fileStream = fs.createReadStream(filename);
     fileStream.pipe(res);
   });
