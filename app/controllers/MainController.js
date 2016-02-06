@@ -6,7 +6,6 @@
   MainController.$inject = ['$scope'];
 
   function MainController($scope, $http) {
-
     /*<bing-map> directive options*/
     $scope.mapOptions = {};
     $scope.mapOptions.center = {latitude: 30.614919,longitude: -96.342316};
