@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html>
   <head>
       <base href="app">
       <meta charset="utf-8">
@@ -9,93 +9,21 @@
       <meta name="viewport" content="width=device-width">
 
       <link rel="stylesheet" href="css/main.css">
-      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-      <script type="text/javascript" src="../bower_components/angular-bing-maps/dist/angular-bing-maps.min.js"></script>
-      <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
-      <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.light_blue-blue.min.css" />
-      <script src="/bower_components/material-design-lite/material.min.js"></script>
+      <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-      <script src="config/Modules.js"></script>
-      <script src="config/App.js"></script>
-      <script src="controllers/MainController.js"></script>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script type="text/javascript" src="../bower_components/angular-bing-maps/dist/angular-bing-maps.min.js"></script>
+      <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+      <script type="text/javascript" src="/bower_components/material-design-lite/material.min.js"></script>
 
+      <script src="config/Modules.js"></script>
+      <script src="config/States.js"></script>
+      <script src="config/App.js"></script>
+      <script src="controllers/NavigationController.js"></script>
+      <script src="controllers/MainController.js"></script>
   </head>
   <body ng-app="fast_eats">
-      <div ui-view></div>
-      <!-- Always shows a header, even in smaller screens. -->
-      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
-          <div class="mdl-layout__header-row">
-            <nav class="mdl-navigation mdl-layout--large-screen-only">
-              <!-- Start Position Field -->
-              <form action="#">
-                <div class="mdl-textfield mdl-js-textfield">
-                  <input class="mdl-textfield__input" type="text" id="start">
-                  <label class="mdl-textfield__label" for="start">Enter Start Location</label>
-                </div>
-              </form>
-
-              <!-- Change Locations -->
-              <button class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons">compare_arrows</i>
-              </button>
-              <!-- End Location Field -->
-              <form action="#">
-                <div class="mdl-textfield mdl-js-textfield">
-                  <input class="mdl-textfield__input" type="text" id="finish">
-                  <label class="mdl-textfield__label" for="finsih">Enter End Location</label>
-                </div>
-              </form>
-
-              <!-- Accent-colored raised button -->
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                Find Restaurants
-              </button>
-            </nav>
-          </div>
-        </header>
-<!--         <div class="mdl-layout__drawer">
-          <span class="mdl-layout-title">Title</span>
-          <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-          </nav>
-        </div> -->
-        <main class="mdl-layout__content">
-          <div class="page-content">
-
-            <div class="bing-map-container" ng-controller="MainController">
-            <bing-map
-                credentials="'AkaxzD5YOJCbIvziHVOLfm6AkeM5Z5UQ3dHS53mQzwK-6LGWnxYjAwNqfe3D4UBT'"
-                center="mapOptions.center"
-                zoom="mapOptions.zoom"
-                mapType="mapOptions.mapType">
-
-                <pushpin
-                    lat="pushpin.location.latitude"
-                    lng="pushpin.location.longitude"
-                    options="pushpin.options"
-                    events="pushpin.events",
-                    pushpin-data="pushpin.data">
-                </pushpin>
-
-            </bing-map>
-
-        </div>
-        <!-- 
-            <bing-map
-                credentials="'AsdaxrvLRHyT6eEvSGDY81S2y3_ifh10egwFAMzIOLtxv0ZlwkPE2yG7jMzXzVkp'"
-                center="{latitude: 30.614919,longitude: -96.342316}"
-                zoom="6"
-                mapType="'a'">
-
-            </bing-map> -->
-
-          </div>
-        </main>
-      </div>
+    <div ng-include src="'config/main_template.html'"></div>
   </body>
 </html>

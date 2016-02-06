@@ -1,15 +1,12 @@
-console.log('loading');
-
 (function() {
   angular
-    .module('main', [])
-    .controller('MainController', MainController);
+    .module('fast_eats.navigation', [])
+    .controller('NavigationController', NavigationController);
 
-  console.log('yo');
-  MainController.$inject = ['$scope'];
+  NavigationController.$inject = ['$scope'];
 
-  function MainController($scope) {
-    console.log('man');
+  function NavigationController($scope) {
+
     $scope.mapOptions = {
       center: { latitude: 30.614919, longitude: -96.342316},
       zoom: 6,
