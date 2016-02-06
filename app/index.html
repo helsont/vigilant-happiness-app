@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js">
   <head>
-      <base href="/">
+      <base href="app">
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title ng-bind="pageTitle"></title>
@@ -9,9 +9,22 @@
       <meta name="viewport" content="width=device-width">
 
       <link rel="stylesheet" href="css/main.css">
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script type="text/javascript" src="../bower_components/angular-bing-maps/dist/angular-bing-maps.min.js"></script>
+      <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+      <script src="js/main.js"></script>
+      <script src="js/controllers/example.js"></script>
   </head>
-  <body>
+  <body ng-app="fast_eats">
       <div ui-view></div>
+      <bing-map
+          credentials="'AsdaxrvLRHyT6eEvSGDY81S2y3_ifh10egwFAMzIOLtxv0ZlwkPE2yG7jMzXzVkp'"
+          center="{latitude: 30.614919,longitude: -96.342316}"
+          zoom="6"
+          mapType="'a'">
+
+      </bing-map>
 
       <script src="js/main.js"></script>
   </body>
