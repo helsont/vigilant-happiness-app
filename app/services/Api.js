@@ -20,7 +20,6 @@
     function getFirstImage(venue) {
       var venueId = venue.id;
       return getImages(venueId).then(function(response) {
-        debugger;
         var list = response.data.response.photos.items;
         var first = list[0];
         var url = first.prefix + '300x300' + first.suffix;

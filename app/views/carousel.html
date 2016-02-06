@@ -1,8 +1,8 @@
 <div class="carousel-wrapper">
-	<slick dots="true" infinite="false" speed=300 slides-to-show=7 touch-move="true" slides-to-scroll=1 class="slider one-time">
+	<slick dots="true" infinite="false" speed=300 slides-to-show=7 touch-move="true" slides-to-scroll=3 class="slider" ng-repeat="image in images">
     <div ng-repeat="image in images">
       <div class="4wrapper">
-  	  	<img src="{{image.url}}">
+  	  	<img src="{{image.imageUrl}}" width="100">
   	  	<p>{{image.name}}</p>
   	  </div>
     </div>
