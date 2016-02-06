@@ -1,27 +1,34 @@
+<div ng-controller="NavigationController">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <!-- Start Position Field -->
+          <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="start">
+              <label class="mdl-textfield__label" for="start">Enter Start Location</label>
+            </div>
+          </form>
 
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <!-- Start Position Field -->
-        <form action="#">
-          <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="start" ng-model="loc.start" required>
-            <label class="mdl-textfield__label" for="start">Enter Start Location</label>
-          </div>
-        <button class="mdl-button mdl-js-button mdl-button--icon">
-          <i class="material-icons">compare_arrows</i>
-        </button>
-          <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="finish" ng-model="loc.finish" required>
-            <label class="mdl-textfield__label" for="finsih">Enter End Location</label>
-          </div>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-          Find Restaurants
-        </button>
+          <!-- Change Locations -->
+          <button class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">compare_arrows</i>
+          </button>
+          <!-- End Location Field -->
+          <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="finish">
+              <label class="mdl-textfield__label" for="finsih">Enter End Location</label>
+            </div>
+          </form>
 
-        </form>
-      </nav>
-    </div>
-  </header>
+          <!-- Accent-colored raised button -->
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+            Find Restaurants
+          </button>
+        </nav>
+      </div>
+    </header>
+  </div>
 </div>

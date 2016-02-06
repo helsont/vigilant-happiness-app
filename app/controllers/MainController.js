@@ -15,10 +15,10 @@
     $scope.pushpin = {};
     $scope.pushpin.location = {latitude: 30.614919,longitude: -96.342316};
     $scope.pushpin.options = {
-        draggable: true
+      draggable: true
     }
     $scope.pushpin.data= {
-        text: 'Hello World!'
+      text: 'Hello World!'
     };
     $scope.pushpin.events = {
         click: function(eventData) {
