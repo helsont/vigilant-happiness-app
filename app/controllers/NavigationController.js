@@ -13,6 +13,7 @@
 
     $scope.submitForm = function() {
       console.log('Submitted form');
+      alert('Start: '+ $scope.form.startLocation+ ' End:' + $scope.form.endLocation);
     }
   }
 })();

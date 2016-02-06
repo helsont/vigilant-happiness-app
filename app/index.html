@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="no-js">
   <head>
       <base href="app">
       <meta charset="utf-8">
@@ -9,20 +9,20 @@
       <meta name="viewport" content="width=device-width">
 
       <link rel="stylesheet" href="css/main.css">
-      <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
       <script type="text/javascript" src="../bower_components/angular-bing-maps/dist/angular-bing-maps.min.js"></script>
       <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
-      <script type="text/javascript" src="/bower_components/material-design-lite/material.min.js"></script>
+      <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.light_blue-blue.min.css" />
+      <script src="/bower_components/material-design-lite/material.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
       <script src="config/Modules.js"></script>
-      <script src="config/States.js"></script>
       <script src="config/App.js"></script>
-      <script src="controllers/NavigationController.js"></script>
       <script src="controllers/MainController.js"></script>
-      <script src="services/Api.js"></script>
+      <script src="controllers/NavigationController.js"></script>
+
   </head>
   <body ng-app="fast_eats">
     <div ng-include src="'config/main_template.html'"></div>
